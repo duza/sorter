@@ -25,9 +25,16 @@ class Sorter {
   }
 
   sort(indices) {
-   let sortingElements = this.elements.filter((el, i) => indices.includes(i));
-   let notSortingElements = this.elements.filter((el, i) => !indices.includes(i));
-   this.elements = [...sortingElements.sort(this.comparator), ...notSortingElements];
+   let sortedElements = this.elements.filter((el, i) =>
+     indices.includes(i))
+     .sort(this.comparator); 
+   let count = 0; 
+   this.elements = this.elements.map((el, i) => {
+     if (indices.includes(i)) {
+       return sortedElements[count++];
+     }
+     return el;
+   });
   }
 
   setComparator(compareFunction) {
