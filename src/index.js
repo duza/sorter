@@ -2,6 +2,15 @@ class Sorter {
   constructor() {
     this.elements = [];
     this.sortedElements = [];
+    this.comparator = (a, b) => {
+      if (a < b) {
+        return -1;
+      }
+      if (a > b) {
+        return 1;
+      }
+      return 0;
+    }
   }
 
   add(element) {
